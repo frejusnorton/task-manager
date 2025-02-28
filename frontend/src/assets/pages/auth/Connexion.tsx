@@ -8,19 +8,20 @@ import Seo from '../../components/Seo';
 const Connexion = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const [isAccepted, setIsAccepted] = useState(false); 
   
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log('Email:', email);
         console.log('Mot de passe:', password);
+        console.log('Conditions acceptées:', isAccepted);
     };
 
     return (
         <>
             <Seo title="Connexion - Task Manager" description="Se connecter à votre gestionnaire de tâches." />
             <div className="flex justify-center items-center min-h-screen bg-gray-100">
-                <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
+                <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
                     <h2 className="text-2xl font-bold mb-6 text-center">Connexion</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
@@ -31,6 +32,7 @@ const Connexion = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
+                                className="border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md w-full p-3"
                             />
                         </div>
                         <div className="mb-6">
@@ -41,9 +43,10 @@ const Connexion = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
+                                className="border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md w-full p-3"
                             />
                         </div>
-                        <Button text="Se connecter" type="submit" />
+                        <Button text="Se connecter" type="submit" disabled={!isAccepted} />
                     </form>
                     <p className="mt-4 text-center">
                         Vous n'avez pas de compte ?{' '}
@@ -51,10 +54,10 @@ const Connexion = () => {
                             S'inscrire
                         </Link>
                     </p>
+                   
                 </div>
             </div>
         </>
-
     );
 };
 

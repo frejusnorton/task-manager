@@ -1,0 +1,17 @@
+/* Personnalisation de NProgress avec couleur bleue */
+#nprogress .bar {
+  background: #007bff;  /* Bleu (tu peux changer cette couleur selon ton design) */
+  height: 5px;  /* Ajuste l'épaisseur de la barre */
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #007bff, 0 0 5px #007bff;  /* Ombre bleue */
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #007bff;  /* Change la couleur du bord supérieur du spinner */
+}
+
+#nprogress .spinner {
+  border-top: 2px solid #007bff;  /* Change la couleur du spinner */
+}

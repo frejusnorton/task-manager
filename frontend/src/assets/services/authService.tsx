@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 interface RegisterData {
-  name: string;
   email: string;
   password: string;
 }
