@@ -1,6 +1,6 @@
 // src/components/SEO.tsx
 import React from 'react';
-import Head from 'next/head';
+import { Helmet } from 'react-helmet';
 
 interface SEOProps {
   title: string;
@@ -9,7 +9,7 @@ interface SEOProps {
 
 const SEO: React.FC<SEOProps> = ({ title, description }) => {
   return (
-    <Head>
+    <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content="task manager, gestion des tâches, React, Tailwind CSS" />
@@ -17,10 +17,10 @@ const SEO: React.FC<SEOProps> = ({ title, description }) => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://ton-site.com" />
-      <meta property="og:image" content="https://ton-site.com/image.jpg" />
+      <meta property="og:image" content="/images/icons/icons.png" />
+
       <meta name="robots" content="index, follow" />
-    </Head>
+    </Helmet>
   );
 };
 
