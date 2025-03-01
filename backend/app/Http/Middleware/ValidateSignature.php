@@ -2,21 +2,17 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Routing\Middleware\ValidateSignature as Middleware;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 
-class ValidateSignature extends Middleware
+class VerifyCsrfToken extends Middleware
 {
     /**
-     * The names of the query string parameters that should be ignored.
+     * The URIs that should be excluded from CSRF verification.
      *
      * @var array<int, string>
      */
     protected $except = [
-        // 'fbclid',
-        // 'utm_campaign',
-        // 'utm_content',
-        // 'utm_medium',
-        // 'utm_source',
-        // 'utm_term',
+        'sanctum/csrf-cookie',
+        'api/*',
     ];
 }

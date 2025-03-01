@@ -1,39 +1,52 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-
 import Connexion from "./assets/pages/auth/Connexion";
 import Inscription from "./assets/pages/auth/Inscription";
-import '../nprogess.css'
+import Header from "./assets/components/Header";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import Dashbord from "./assets/pages/dashbord/Dashbord";
+import Statistiques from "./assets/pages/statistiques/statistique";
+
+NProgress.configure({ showSpinner: false });
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <div>
+      <Header />
       <RouteHandler />
-    </Router>
+    </div>
   );
 };
 
 const RouteHandler: React.FC = () => {
-  const location = useLocation(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
-    NProgress.start(); 
+    const authToken = localStorage.getItem('authToken');
+    if (!authToken) {
+      navigate('/connexion'); 
+    } 
+  }, [navigate]);
 
-   
+  useEffect(() => {
+    NProgress.start();
     const timer = setTimeout(() => {
-      NProgress.done(); 
-    }, 500); 
-
-   
+      NProgress.done();
+    }, 200);
     return () => clearTimeout(timer);
-  }, [location]); 
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Connexion />} />
       <Route path="/connexion" element={<Connexion />} />
       <Route path="/inscription" element={<Inscription />} />
+      <Route path="/dashboard" element={<Dashbord />} />
+      <Route path="/statistiques" element={<Statistiques />} />
     </Routes>
   );
 };
