@@ -79,3 +79,6 @@ php artisan serve
 Ton projet fonctionne bien maintenant, félicitations 🎉 ! Tu peux maintenant gérer et suivre tes tâches avec facilité.
 
 
+
+![Image de l'application](frontend/public/taskManager.png)
+
